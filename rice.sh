@@ -28,7 +28,7 @@ cp -r wofi ~/.config/
 cp -r kitty ~/.config/
 
 cp zshrc ~/.zshrc
-cp starship.toml ~/.config/starstip.toml
+cp starship.toml ~/.config/starship.toml
 
 cp -r wallpapers ~/Pictures/
 
