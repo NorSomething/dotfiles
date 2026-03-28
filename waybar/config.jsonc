@@ -1,0 +1,40 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 24,
+
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["cpu", "custom/cputemp", "memory", "battery"],
+
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "format": "{name}"
+  },
+
+  "clock": {
+    "interval" : 1,
+    "format": "{:%H:%M}"
+  },
+
+  "cpu": {
+    "format": "CPU {usage}%"
+  },
+
+  "custom/cputemp": {
+    "exec": "sensors | grep -m1 'Tctl' | awk '{print $2}'",
+    "interval": 3,
+    "format": "{}",
+    "tooltip": false
+  },
+
+  "memory": {
+    "format": "RAM {used:0.1f}G"
+  },
+
+  "battery": {
+    "bat": "BAT1",
+    "format": "{capacity}%"
+  }
+}
+

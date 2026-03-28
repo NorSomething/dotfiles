@@ -1,0 +1,38 @@
+* {
+  font-size: 13px;
+  color: black;
+  font-family: monospace;
+}
+
+window#waybar {
+  background: transparent;
+  padding: 0;
+  min-height: 0;
+}
+
+/* ze boxes */
+#workspaces,
+#clock,
+#cpu,
+#memory,
+#custom-cputemp,
+#battery {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0px 6px;      
+  margin: 0 2px;
+  border-radius: 6px;
+  min-height: 0;
+}
+
+#workspaces button {
+  padding: 0px 8px;    
+  margin: 0;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  min-height: 0;
+}
+
+#workspaces button.active {
+  border-bottom: 2px solid black;
+}

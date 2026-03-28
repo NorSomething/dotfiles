@@ -1,0 +1,7 @@
+background_opacity 0.67
+
+
+# BEGIN_KITTY_THEME
+# 1984 Orwellian
+include current-theme.conf
+# END_KITTY_THEME
