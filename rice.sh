@@ -11,13 +11,16 @@ sudo pacman -S --noconfirm \
     starship zsh git base-devel hyprshot
 
 echo "Installing yay (AUR helper)..."
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si --noconfirm
-cd ..
+if ! command -v yay >/dev/null; then
+    git clone https://aur.archlinux.org/yay.git
+    cd yay
+    makepkg -si --noconfirm
+    cd ..
+fi
 
 echo "Copying configs..."
 mkdir -p ~/.config
+mkdir -p ~/.config ~/Pictures
 
 cp -r hypr ~/.config/
 cp -r waybar ~/.config/
@@ -25,15 +28,11 @@ cp -r wofi ~/.config/
 cp -r kitty ~/.config/
 
 cp zshrc ~/.zshrc
-cp starship.toml ~/.starstip.toml
-cp -r wallpapers ~/.wallpapers
+cp starship.toml ~/.config/starstip.toml
+
+cp -r wallpapers ~/Pictures/
 
 echo "Setting up Zsh"
 chsh -s $(which zsh)
-
-echo "Setting up Starship"
-
-cp -r zsh/zshrc ~/.config/
-cp -r zsh/starship.toml ~/.config/
 
 echo "Done! Please restart your system."
