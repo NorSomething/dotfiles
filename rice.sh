@@ -8,7 +8,7 @@ sudo pacman -Syu --noconfirm
 echo "Installing packages..."
 sudo pacman -S --noconfirm \
     hyprland waybar wofi kitty thunar \
-    starship zsh git base-devel hyprshot
+    starship zsh git base-devel hyprshot zoxide
 
 echo "Installing yay (AUR helper)..."
 if ! command -v yay >/dev/null; then
@@ -21,6 +21,8 @@ fi
 echo "Copying configs..."
 mkdir -p ~/.config
 mkdir -p ~/.config ~/Pictures
+
+rm ~/.config/hypr/hyprland.conf
 
 cp -r hypr ~/.config/
 cp -r waybar ~/.config/
