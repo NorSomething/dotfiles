@@ -8,7 +8,9 @@ sudo pacman -Syu --noconfirm
 echo "Installing packages..."
 sudo pacman -S --noconfirm \
     hyprland waybar wofi kitty thunar \
-    starship zsh git base-devel hyprshot zoxide
+    starship zsh git base-devel hyprshot zoxide \
+    awww zsh-autosuggestions zsh-syntax-highlighting brightnessctl playerctl \
+    polkit-gnome
 
 echo "Installing yay (AUR helper)..."
 if ! command -v yay >/dev/null; then
