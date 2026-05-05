@@ -5,6 +5,10 @@ set -e
 echo "Updating System..."
 sudo pacman -Syu --noconfirm
 
+echo "Creating .config/hypr/hyprland.conf so that hyprland doesnt auto gen one"
+mkdir -p ~/.config/hypr
+touch ~/.config/hypr/hyprland.conf
+
 echo "Installing packages..."
 sudo pacman -S --noconfirm \
     hyprland waybar wofi kitty thunar \
@@ -24,8 +28,6 @@ echo "Copying configs..."
 mkdir -p ~/.config
 mkdir -p ~/.config ~/Pictures
 
-rm ~/.config/hypr/hyprland.conf
-
 cp -r hypr ~/.config/
 cp -r waybar ~/.config/
 cp -r wofi ~/.config/
@@ -37,6 +39,6 @@ cp starship.toml ~/.config/starship.toml
 cp -r wallpapers ~/Pictures/
 
 echo "Setting up Zsh"
-chsh -s $(which zsh)
+chsh -s "$(which zsh)"
 
 echo "Done! Please restart your system."
