@@ -10,7 +10,7 @@ sudo pacman -S --noconfirm \
     i3-wm polybar wofi kitty thunar \
     starship zsh git base-devel zoxide \
     zsh-autosuggestions zsh-syntax-highlighting brightnessctl playerctl \
-    polkit-gnome feh picom xorg-xinit xorg-server fastfetch
+    polkit-gnome feh picom xorg-xinit xorg-server fastfetch eza
 
 echo "Installing yay (AUR helper)..."
 if ! command -v yay >/dev/null; then
@@ -34,9 +34,9 @@ cp -r rofi/. ~/.config/rofi/
 cp -r kitty/. ~/.config/kitty/
 cp -r fastfetch/fastfetch-i3.jsonc ~/.config/fastfetch
 
-cp zshrc ~/.zshrc
+cp .zshrc ~/.zshrc
 cp -r starship/starship-i3.toml ~/.config/starship.toml
-cp -r wallpapers ~/wallpapers/
+cp -r wallpapers/* ~/wallpapers/
 
 echo "Setting wallpaper with feh..."
 feh --bg-scale ~/wallpapers/i3wallblack
