@@ -1,0 +1,30 @@
+add_newline = false
+
+format = """
+╭─$username@$hostname $directory$git_branch$git_status
+╰─➜ """
+
+[username]
+style_user = "bold #E6C07B"
+show_always = true
+
+[hostname]
+style = "bold #D19A66"
+ssh_only = false
+format = "[$hostname]($style)"
+
+[directory]
+style = "bold #61AFEF"
+truncation_length = 3
+
+[git_branch]
+symbol = "🌱 "
+style = "bold purple"
+
+[git_status]
+style = "bold red"
+
+[cmd_duration]
+min_time = 500
+format = "took [$duration]($style) "
+style = "yellow"

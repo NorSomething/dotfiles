@@ -1,0 +1,34 @@
+add_newline = false
+
+format = """
+╭─$username@$hostname $directory$git_branch$git_status$cmd_duration
+╰─ """
+
+[username]
+style_user = "bold white"
+show_always = true
+
+[hostname]
+style = "bold #aaaaaa"
+ssh_only = false
+format = "[$hostname]($style)"
+
+[directory]
+style = "bold #dddddd"
+truncation_length = 3
+
+[git_branch]
+symbol = " "
+style = "bold #888888"
+
+[git_status]
+style = "bold #666666"
+
+[cmd_duration]
+min_time = 500
+format = "took [$duration]($style) "
+style = "dimmed white"
+
+[character]
+success_symbol = "[➜](bold white)"
+error_symbol = "[➜](bold dimmed white)"
