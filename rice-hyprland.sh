@@ -2,6 +2,8 @@
 
 set -e
 
+bash "$(dirname "$0")/backup.sh"
+
 echo "Updating System..."
 sudo pacman -Syu --noconfirm
 
