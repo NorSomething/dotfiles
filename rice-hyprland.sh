@@ -35,8 +35,8 @@ cp -r waybar ~/.config/
 cp -r wofi ~/.config/
 cp -r kitty ~/.config/
 
-cp zshrc ~/.zshrc
-cp starship.toml ~/.config/starship.toml
+cp .zshrc ~/.zshrc
+cp starship/starship-hyprland.toml ~/.config/starship.toml
 
 cp -r wallpapers ~/Pictures/
 
