@@ -16,7 +16,7 @@ sudo pacman -S --noconfirm \
     hyprland waybar wofi kitty thunar \
     starship zsh git base-devel hyprshot zoxide \
     awww zsh-autosuggestions zsh-syntax-highlighting brightnessctl playerctl \
-    polkit-gnome
+    polkit-gnome eza
 
 echo "Installing yay (AUR helper)..."
 if ! command -v yay >/dev/null; then
