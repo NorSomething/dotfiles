@@ -56,3 +56,6 @@ or
 - A restart after the install is recommended, although not compulsary.
 - The screenshot wallpaper for the i3 rice is different from what actually gets installed. (This readme is a long time due so some stuff is different in the SS) :P
 
+# Todo
+- [ ] Port the hyprland configs to lua.
+- [ ] Use relative paths(?) in the scripts.
