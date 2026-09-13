@@ -1,8 +1,13 @@
 add_newline = false
 
 format = """
-╭─$username@$hostname $directory$git_branch$git_status$cmd_duration
+╭─${custom.python_venv}$username@$hostname $directory$git_branch$git_status$cmd_duration
 ╰─ """
+
+[custom.python_venv]
+command = 'printf "(%s)" "$(basename "$VIRTUAL_ENV")"'
+when = 'test -n "$VIRTUAL_ENV"'
+format = '[$output ](bold green)'
 
 [username]
 style_user = "bold white"
