@@ -30,6 +30,10 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("awww-daemon")
     hl.exec_cmd("awww img ~/wallpapers/b.jpg")
     hl.exec_cmd("waybar")
+    -- UPower emits an event when AC status changes, so this does not wake the
+    -- CPU on a timer.  Battery means 60 Hz; connected AC restores 144 Hz.
+    -- This refresh rate changign mech is vibecoded and hence unreadable lol 
+    hl.exec_cmd([[sh -c 'last_rate=; set_rate() { rate=144; mains_seen=0; mains_online=0; for supply in /sys/class/power_supply/*; do [ -r "$supply/type" ] || continue; [ "$(cat "$supply/type")" = Mains ] || continue; mains_seen=1; [ -r "$supply/online" ] && [ "$(cat "$supply/online")" = 1 ] && mains_online=1; done; [ "$mains_seen" = 1 ] && [ "$mains_online" = 0 ] && rate=60; if [ "$rate" != "$last_rate" ]; then hyprctl keyword monitor ",1920x1080@$rate,auto,1"; last_rate=$rate; fi; }; set_rate; upower --monitor | while IFS= read -r _; do set_rate; done']])
     hl.exec_cmd("hyprctl dispatch dpms on")
     hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 end)

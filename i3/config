@@ -204,8 +204,11 @@ bindsym $mod+Print exec --no-startup-id maim | xclip -selection clipboard -t ima
 # picom auto start cuz kitty opactiy doesnt work without instance
 exec --no-startup-id picom
 
-# use 144hz 
-exec_always --no-startup-id xrandr --output DP-2 --mode 1920x1080 --rate 144
+# UPower emits an event when AC status changes; no periodic polling is used.
+# On battery use 60 Hz; connected AC restores 144 Hz.  flock prevents a
+# second watcher from being started when this i3 configuration is reloaded.
+# This refresh rate changign mech is vibecoded and hence unreadable lol 
+exec_always --no-startup-id sh -c 'exec 9>"${XDG_RUNTIME_DIR:-/tmp}/i3-refresh-rate.lock"; flock -n 9 || exit 0; last_rate=; set_rate() { rate=144; mains_seen=0; mains_online=0; for supply in /sys/class/power_supply/*; do [ -r "$supply/type" ] || continue; [ "$(cat "$supply/type")" = Mains ] || continue; mains_seen=1; [ -r "$supply/online" ] && [ "$(cat "$supply/online")" = 1 ] && mains_online=1; done; [ "$mains_seen" = 1 ] && [ "$mains_online" = 0 ] && rate=60; if [ "$rate" != "$last_rate" ]; then xrandr --output DP-2 --mode 1920x1080 --rate "$rate"; last_rate=$rate; fi; }; set_rate; upower --monitor | while IFS= read -r _; do set_rate; done'
 
 # gaps
 gaps inner 10 
